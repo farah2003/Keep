@@ -56,7 +56,7 @@ const userColloectionRef=collection(db,"Users")
       await updateDoc(userDocs,{name:updateUser.name})
       setIsUpdate(true)
     }catch(e){
-      console.log(e)
+      console.log(e,'error')
     }
   }
   return (  

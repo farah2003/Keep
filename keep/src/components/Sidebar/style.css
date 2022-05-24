@@ -1,0 +1,43 @@
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top:60px;
+    left: 0;
+    width: 280px;
+    padding: 0 6px;
+}
+.sidebar ul li{
+    list-style: none;
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+.sidebar ul li a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight:600;
+    height: 100%;
+    width: 100%;
+    transition: all 0.8 ease;
+    padding: 0 20px;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+.sidebar ul li a:hover{
+    background-color: #feefc3;
+    height: 50px;
+    border-radius: 0 25px 25px 0;
+}
+.sidebar ul li a i{
+    height: 50px;
+    min-width: 50px;
+    font-size: 18px;
+    
+}
+.sidebar ul li a span {
+    margin-left: 25px;
+}

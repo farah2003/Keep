@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.NavBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    border-bottom: 1px solid rgba(95,99,104,0.157) ;
+    padding: 5px 20px;
+    gap: 25px;
+}
+.first-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+.first-section a{
+    font-family: "Product Sans",Arial,sans-serif;
+    font-size: 22px;
+    line-height: 24px;
+    color: #5f6368;
+    text-decoration: none;
+}
+.first-section a:hover{
+    text-decoration: underline;
+}
+.first-section img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.secand-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(95, 99, 104, 0.048);
+    width: 720px;
+    border-radius: 10px;
+    padding: 0 20px;
+    gap: 20px;
+}
+.secand-section:hover{
+background-color: #fff;
+box-shadow:  rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.secand-section input{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(95, 99, 104, 0) ;
+}
+.secand-section input::placeholder{
+    color: #5f6368;
+    font-family: "Product Sans",Arial,sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+}
+.third-section{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.right-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.left-section{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.avater{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: azure;
+    border-radius: 50%;
+}
+
+.icon{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-weight: 500;
+    color: #5f6368;
+}
+.icon:hover{
+    background-color: rgba(95, 99, 104, 0.288);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: #000;
+}

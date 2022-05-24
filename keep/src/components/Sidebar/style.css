@@ -4,12 +4,20 @@
     width: 100%;
     top:60px;
     left: 0;
-    width: 280px;
+    width: 240px;
     padding: 0 6px;
+    transition: width 0.5;
+    overflow: hidden;
+}
+.sidebar ul{
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    left: 0;
 }
 .sidebar ul li{
     list-style: none;
-    height: 50px;
+    height: 100%;
     width: 100%;
     position: relative;
 }
@@ -26,6 +34,7 @@
     font-family: "Google Sans",Roboto,Arial,sans-serif;
     font-size: 15px;
     font-weight: 500;
+    margin:0 5px 0 0;
 }
 .sidebar ul li a:hover{
     background-color: #feefc3;
@@ -40,4 +49,60 @@
 }
 .sidebar ul li a span {
     margin-left: 25px;
+}
+.sider-icon{
+    font-size: 20px;
+}
+.sidebar2{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top:60px;
+    left: 0;
+    width: 60px;
+    padding: 0 6px;
+    transition: width 0.5;
+    overflow: hidden;
+}
+.sidebar2 ul{
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+.sidebar2 ul li{
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.sidebar2 ul li a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight:600;
+    height: 100%;
+    width: 100%;
+    transition: all 0.8 ease;
+    padding: 0 20px;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin:0  0 0 5px;
+}
+.sidebar2 ul li a:hover{
+    background-color: #feefc3;
+    height: 50px;
+    border-radius: 50%;
+    width: 95%;
+}
+.sidebar2 ul li a i{
+    height: 50px;
+    min-width: 50px;
+    font-size: 18px;
+    
+}
+.sider-icon{
+    font-size: 20px;
 }

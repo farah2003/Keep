@@ -1,0 +1,45 @@
+.card{
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 600px;
+    border: 1px solid rgba(95,99,104,0.157);
+    border-radius: 10px; 
+    margin: 200px;
+    padding:10px;
+}
+.card .title {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    letter-spacing: .00625em;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+.card .content{
+    min-height: 30px;
+    letter-spacing: .01428571em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+
+}
+.card-icons{
+    display: flex;
+    align-items: flex-end;
+        min-height: 50px;
+    gap:30px;
+    font-size: 17px;  
+    opacity: 0;
+}
+.card:hover{
+    box-shadow:  rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.card:hover .card-icons{
+    opacity: 1;
+    
+}

@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FiMenu,FiSearch,FiGrid,FiSettings } from 'react-icons/fi';
 import {IoReload} from 'react-icons/io5'
 import {BsFillGrid3X3GapFill}from 'react-icons/bs'
 import './style.css'
-function NavBar() {
+function NavBar({setToggle}) {
     return (
         <div className='NavBar'>
             <div className='first-section'>
                 <div className='icon'>
-                    <FiMenu/>
+                    <FiMenu onClick={()=>setToggle((prev)=>!prev)}/>
                 </div>
                 <img src='https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png'/>
                 <a href='#'>Keep</a>
@@ -40,5 +41,8 @@ function NavBar() {
         </div>
     );
 }
+NavBar.propTypes = {
+    setToggle: PropTypes.func.isRequired
+  };
 
 export default NavBar;

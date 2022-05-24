@@ -1,11 +1,12 @@
-import React from 'react';
-import NavBar from './components';
-
+import React, { useState } from 'react';
+import {NavBar ,Sidebar }from './components';
 const App=() =>{
+const [toggle,setToggle]=useState(false)
 
-  return (  
+  return (    
     <div>
-      <NavBar/>
+      <Sidebar toggle={toggle} />
+      <NavBar setToggle={setToggle}/>
     </div>
 
   );

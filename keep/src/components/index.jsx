@@ -1,3 +1,4 @@
+import Sidebar from "./Sidebar/idnex";
 import NavBar from "./NavBar";
 
-export default NavBar
+export  {NavBar,Sidebar}

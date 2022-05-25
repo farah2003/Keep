@@ -4,7 +4,7 @@ import { FiMenu,FiSearch,FiGrid,FiSettings } from 'react-icons/fi';
 import {IoReload} from 'react-icons/io5'
 import {BsFillGrid3X3GapFill}from 'react-icons/bs'
 import './style.css'
-function NavBar({setToggle}) {
+function NavBar({setToggle,view,setView}) {
     return (
         <div className='NavBar'>
             <div className='first-section'>
@@ -24,7 +24,9 @@ function NavBar({setToggle}) {
                         <IoReload/>
                     </div>
                     <div className='icon'>
-                        <FiGrid/>
+                        {view==="grid"?  <FiGrid onClick={()=>setView('list')}/>:
+                          <FiSettings onClick={()=>setView('grid') }/>}
+                      
                     </div>
                     <div className='icon'>
                         <FiSettings/>
@@ -42,7 +44,9 @@ function NavBar({setToggle}) {
     );
 }
 NavBar.propTypes = {
-    setToggle: PropTypes.func.isRequired
+    setToggle: PropTypes.func.isRequired,
+    view:PropTypes.string.isRequired,
+    setView:PropTypes.func.isRequired
   };
 
 export default NavBar;

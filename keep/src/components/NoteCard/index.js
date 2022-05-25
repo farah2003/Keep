@@ -1,11 +1,13 @@
 import React from 'react';
 import {BsBell} from 'react-icons/bs'
+import PropTypes from 'prop-types';
 import {BiUserPlus,BiImage,BiArchiveIn}from 'react-icons/bi'
 import {FiMoreVertical}from 'react-icons/fi'
 import './style.css'
-function NoteCard() {
+function NoteCard({view}) {
+    console.log(view)
     return (
-        <div className='card list-card' >
+        <div className={`card ${view}-card` }>
             <div className='title'>
             is simply dummy text of the printing
             </div>
@@ -32,5 +34,8 @@ function NoteCard() {
         </div>
     );
 }
+NoteCard.propTypes = {
+    view:PropTypes.string.isRequired,
+     };
 
 export default NoteCard;

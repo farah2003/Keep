@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {NavBar ,Sidebar ,CardList}from './components/index';
 import {db} from './firebase-config'
-import {collection ,getDocs } from 'firebase/firestore'
+import {collection ,getDocs ,where,query} from 'firebase/firestore'
 
 import './app.css'
 const App=() =>{
@@ -14,7 +14,9 @@ const App=() =>{
   useEffect(()=>{
     const fetchData=async()=>{
       try{
-        const data =await getDocs(notesColloectionRef);
+    
+        const notesquery=query(notesColloectionRef,where("isDeleted","==",false))
+        const data =await getDocs(notesquery);
         setNotes(data.docs.map((doc)=>({...doc.data(),id:doc.id })))
       }catch(e){
         console.log(e)

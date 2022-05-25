@@ -4,12 +4,12 @@ import NoteCard from '../NoteCard/index';
 import NotesInput  from '../NotesInput/index';
 import EditNotes from '../EditNotes';
 import './style.css'
-function CardList({view,notes}) {
+function CardList({view,notes,setIsUpdate}) {
     const [editModle,setEditModle]=useState(false)
     return (
         <div className='card-list'>
             <div className='input-section'>
-            <NotesInput/>  
+            <NotesInput setIsUpdate={setIsUpdate}/>  
             </div>
             {editModle?
             <EditNotes setEditModle={setEditModle}/>
@@ -29,7 +29,8 @@ function CardList({view,notes}) {
 }
 CardList.propTypes = {
  view:PropTypes.string.isRequired,
- notes:PropTypes.arrayOf.isRequired
+ notes:PropTypes.arrayOf.isRequired,
+ setIsUpdate:PropTypes.func.isRequired
   };
 
 export default CardList;

@@ -10,7 +10,7 @@ import './style.css'
 
 function NotesInput({setIsUpdate}) {
     const [visible,setVisible]=useState(false)
-    const [note,setNote]=useState({title:"",content:""})
+    const [note,setNote]=useState({title:"",content:"",isDeleted:false})
     const noteColloectionRef=collection(db,'Notes')
     const handleAddNotes=async()=>{
         try{

@@ -8,7 +8,7 @@ import './style.css'
 function NotesInput({noteData ,setNoteData}) {
     const [visible,setVisible]=useState(false)
     return (
-        <div>
+        <div className='input-container'>
         <div className='notes-input'>
             <input placeholder='Take a notes...' onClick={()=>setVisible(true)}/>
             <AiOutlineCheckSquare className='input-icon'/>

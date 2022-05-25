@@ -5,7 +5,7 @@ import {FiMoreVertical}from 'react-icons/fi'
 import './style.css'
 function NoteCard() {
     return (
-        <div className='card'>
+        <div className='card list-card' >
             <div className='title'>
             is simply dummy text of the printing
             </div>

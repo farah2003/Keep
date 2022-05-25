@@ -5,7 +5,6 @@ import {BiUserPlus,BiImage,BiArchiveIn}from 'react-icons/bi'
 import {FiMoreVertical}from 'react-icons/fi'
 import './style.css'
 function NoteCard({view}) {
-    console.log(view)
     return (
         <div className={`card ${view}-card` }>
             <div className='title'>

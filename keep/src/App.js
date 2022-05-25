@@ -20,11 +20,13 @@ const [view,setView]=useState('list')
         </div>
         }
         <div className='cards-conatiner'>
-          <CardList setNoteData={setNoteData} noteData={noteData} view={view} />
+          <CardList setNoteData={setNoteData} 
+          noteData={noteData}
+           view={view}
+         />
         </div>
       
-      </div>
-      
+      </div>      
     </div>
 
   );

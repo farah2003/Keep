@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FiMenu,FiSearch,FiGrid,FiSettings } from 'react-icons/fi';
 import {IoReload} from 'react-icons/io5'
 import {BsFillGrid3X3GapFill}from 'react-icons/bs'
+import {MdOutlineViewAgenda} from 'react-icons/md'
 import './style.css'
 function NavBar({setToggle,view,setView}) {
     return (
@@ -25,7 +26,7 @@ function NavBar({setToggle,view,setView}) {
                     </div>
                     <div className='icon'>
                         {view==="grid"?  <FiGrid onClick={()=>setView('list')}/>:
-                          <FiSettings onClick={()=>setView('grid') }/>}
+                          <MdOutlineViewAgenda onClick={()=>setView('grid') }/>}
                       
                     </div>
                     <div className='icon'>

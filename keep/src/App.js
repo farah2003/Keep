@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import {NavBar ,Sidebar ,CardList}from './components/index';
 import {db} from './firebase-config'
-import {collection ,getDocs} from 'firebase/firestore'
+import {collection ,getDocs } from 'firebase/firestore'
 
 import './app.css'
 const App=() =>{
   const [toggle,setToggle]=useState(false)
-  const [noteData,setNoteData]=useState({title:"",content:""})
   const [view,setView]=useState('list');
-  const [notes,setNotes]=useState([])
+  const [notes,setNotes]=useState([]);
+  const [isUpdate,setIsUpdate]=useState(false)
 
-  const userColloectionRef=collection(db,"Notes")
+  const notesColloectionRef=collection(db,"Notes")
   useEffect(()=>{
     const fetchData=async()=>{
       try{
-        const data =await getDocs(userColloectionRef);
+        const data =await getDocs(notesColloectionRef);
         setNotes(data.docs.map((doc)=>({...doc.data(),id:doc.id })))
       }catch(e){
         console.log(e)
@@ -22,7 +22,7 @@ const App=() =>{
     }
     fetchData()
 
-  },[])
+  },[isUpdate])
   return (    
     <div>
       <NavBar setToggle={setToggle} view={view} setView={setView}/>
@@ -37,10 +37,10 @@ const App=() =>{
         </div>
         }
         <div className='cards-conatiner'>
-          <CardList setNoteData={setNoteData} 
-          noteData={noteData}
+          <CardList
           notes={notes}
            view={view}
+           setIsUpdate={setIsUpdate}
          />
         </div>
       

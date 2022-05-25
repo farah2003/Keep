@@ -1,17 +1,30 @@
 import React from 'react';
 import {BsBell} from 'react-icons/bs'
 import PropTypes from 'prop-types';
+import {db} from '../../firebase-config'
+import {updateDoc,doc} from 'firebase/firestore'
 import {BiUserPlus,BiImage,BiArchiveIn}from 'react-icons/bi'
-import {FiMoreVertical}from 'react-icons/fi'
+import {FiMoreVertical,FiTrash2}from 'react-icons/fi'
 import './style.css'
-function NoteCard({view,item}) {
+function NoteCard({view,item,setIsUpdate,displayCardContent}) {
+    const handleMoveToTrash= async (item)=>{
+        try{
+            const userDocs=doc(db,"Notes",item.id)
+            await updateDoc(userDocs,{...item ,isDeleted :true})
+            setIsUpdate(true)
+          }catch(e){
+            console.log(e)
+          } 
+    }
     return (
         <div className={`card ${view}-card` }>
+                <div onClick={()=>displayCardContent(item)}>
             <div className='title'>
            {item.title}
             </div>
             <div className='content'>
             {item.content}
+            </div>
             </div>
             <div className='card-icons'>
          <div>
@@ -27,15 +40,21 @@ function NoteCard({view,item}) {
          <BiArchiveIn/>
          </div>
          <div>
+         <FiTrash2 onClick={()=>handleMoveToTrash(item)}/>
+         </div>
+         <div>
              <FiMoreVertical/>
          </div>
+       
          </div>
         </div>
     );
 }
 NoteCard.propTypes = {
     view:PropTypes.string.isRequired,
-    item:PropTypes.objectOf.isRequired
+    item:PropTypes.objectOf.isRequired,
+    setIsUpdate:PropTypes.func.isRequired,
+    displayCardContent:PropTypes.func.isRequired
      };
 
 export default NoteCard;

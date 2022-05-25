@@ -37,8 +37,8 @@ function CardList({view,notes,setIsUpdate}) {
            :  <div className={`${view}`}>
                {notes.map((item)=>{
                 return (
-                <div key={item.id} onClick={()=>displayCardContent(item)}>
-                 <NoteCard view={view} item={item}/>
+                <div key={item.id} >
+                 <NoteCard view={view} item={item} setIsUpdate={setIsUpdate} displayCardContent={displayCardContent}/>
                  </div>)
                })}
              

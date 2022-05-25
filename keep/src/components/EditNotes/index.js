@@ -33,7 +33,7 @@ function EditNotes({handleEditNote,updateNote,setUpdateNote}) {
      </div>
      <div>
          <FiMoreVertical/>
-     </div>
+     </div> 
      </div>
      <span onClick={()=>handleEditNote()}>Close</span>
         </div>

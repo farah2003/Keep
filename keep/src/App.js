@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
-import {NavBar /*,NotesInput*/,Sidebar ,NoteCard}from './components/index';
-const App=() =>{const [toggle,setToggle]=useState(false)
-//const [noteData,setNoteData]=useState({title:"",content:""})
+import {NavBar ,Sidebar ,CardList}from './components/index';
+import './app.css'
+const App=() =>{
+const [toggle,setToggle]=useState(false)
+const [noteData,setNoteData]=useState({title:"",content:""})
+const [view,setView]=useState('list')
 
   return (    
     <div>
-      <NavBar setToggle={setToggle}/>
-      {/*<NotesInput setNoteData={setNoteData} noteData={noteData}/>*/}
-      <Sidebar toggle={toggle}/>
-      <NoteCard/>
+      <NavBar setToggle={setToggle} view={view} setView={setView}/>
+      <div className='page-content'>
+        {toggle?
+        <div className="non-expanded">
+          <Sidebar  toggle={toggle}/>
+        </div>
+        :
+        <div className='expanded'>
+          <Sidebar toggle={toggle}/>
+        </div>
+        }
+        <div className='cards-conatiner'>
+          <CardList setNoteData={setNoteData} noteData={noteData} view={view} />
+        </div>
+      
+      </div>
+      
     </div>
 
   );

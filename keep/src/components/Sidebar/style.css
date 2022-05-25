@@ -1,7 +1,6 @@
 .sidebar{
     position: fixed;
     height: 100%;
-    width: 100%;
     top:60px;
     left: 0;
     width: 240px;
@@ -28,7 +27,7 @@
     color: black;
     font-weight:600;
     height: 100%;
-    width: 100%;
+    width:90%;
     transition: all 0.8 ease;
     padding: 0 20px;
     font-family: "Google Sans",Roboto,Arial,sans-serif;

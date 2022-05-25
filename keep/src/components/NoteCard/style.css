@@ -1,14 +1,22 @@
 .card{
-    min-height: 110px;
     display: flex;
     flex-direction: column;
     gap: 3px;
-    width: 600px;
     border: 1px solid rgba(95,99,104,0.157);
     border-radius: 10px; 
-    margin: 200px;
     padding:10px;
+    margin-bottom: 15px;
+
+} 
+.list-card{
+    width: 600px;
+    min-height: 110px;
 }
+.grid-card{
+    min-height: 110px;
+    width: 230px;
+}
+
 .card .title {
     min-height: 30px;
     display: flex;

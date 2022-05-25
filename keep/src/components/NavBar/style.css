@@ -92,6 +92,7 @@ box-shadow:  rgba(0, 0, 0, 0.16) 0px 1px 4px;
     height: 2.5rem;
     font-weight: 500;
     color: #5f6368;
+    cursor: pointer;
 }
 .icon:hover{
     background-color: rgba(95, 99, 104, 0.288);

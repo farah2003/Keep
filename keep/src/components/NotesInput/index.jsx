@@ -8,11 +8,8 @@ import './style.css'
 function NotesInput({noteData ,setNoteData}) {
     const [visible,setVisible]=useState(false)
     return (
-        <div>
-        <div className='notes-input'>
-            <input placeholder='Take a notes...' onClick={()=>setVisible(true)}/>
-            <AiOutlineCheckSquare className='input-icon'/>
-        </div>
+        <div className='input-container'>
+        
         {visible? <div className='add-notes-modle'>
             <input placeholder='Title' 
             onChange={(e)=>setNoteData({...noteData,title:e.target.value})}/>
@@ -38,7 +35,11 @@ function NotesInput({noteData ,setNoteData}) {
          </div>
          <span onClick={()=>setVisible(false)}>Close</span>
             </div>
-        </div>:null}
+        </div>:
+        <div className='notes-input'>
+        <input placeholder='Take a notes...' onClick={()=>setVisible(true)}/>
+        <AiOutlineCheckSquare className='input-icon'/>
+    </div>}
     
         </div>
     );

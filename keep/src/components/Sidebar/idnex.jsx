@@ -7,8 +7,7 @@ import {FiTrash2} from'react-icons/fi'
 import './style.css'
 function Sidebar({toggle}) {
     return (
-        <div>
-            {!toggle?     <div className='sidebar'>
+            !toggle? <div className='sidebar'>
                 <ul>
                     <li>
                         <a href='#'>          
@@ -71,8 +70,7 @@ function Sidebar({toggle}) {
                     </li>
                 </ul>
             
-        </div>}   
-        </div>
+        </div> 
     );
 }
 

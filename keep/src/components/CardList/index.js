@@ -1,15 +1,18 @@
-import React,{useState} from 'react';
+import React,{useState ,useContext } from 'react';
 import PropTypes from 'prop-types';
 import {db} from '../../firebase-config'
 import {updateDoc, doc} from 'firebase/firestore'
 import NoteCard from '../NoteCard/index';
 import NotesInput  from '../NotesInput/index';
 import EditNotes from '../EditNotes';
+import { AuthContext} from '../../Auth';
 import './style.css'
 
 const CardList=({view,notes,setIsUpdate}) =>{
     const [editModle,setEditModle]=useState(false);
     const [updateNote,setUpdateNote]=useState({});
+    const {user}=useContext(AuthContext)
+    console.log(user.uid,'currentUsercurrentUser')
 
     const displayCardContent=(item)=>{
         setEditModle(true)

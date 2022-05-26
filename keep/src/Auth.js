@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,createContext} from 'react';
 import  {onAuthStateChanged,getAuth} from 'firebase/auth';
 import PropTypes from 'prop-types';
-export const AuthContext=React.createContext()
+export const AuthContext=createContext()
 export const AuthProvider=({children})=>{
-    const [user ,setUser]=useState()
+    const [user ,setUser]=useState(null)
     const auth = getAuth();
 
     useEffect(()=>{
@@ -13,9 +13,9 @@ export const AuthProvider=({children})=>{
           }})
       },[]);
 return(
-    <AuthProvider.Provider value={user,setUser}>
+    <AuthContext.Provider value={{user,setUser}}>
         {children}
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
 )}
 
 AuthProvider.propTypes = {

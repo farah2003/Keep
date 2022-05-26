@@ -1,17 +1,23 @@
-import React from 'react';
+import React ,{useContext}from 'react';
 import PropTypes from 'prop-types';
 import {BsBell} from 'react-icons/bs'
 import {db} from '../../firebase-config'
 import {updateDoc,doc} from 'firebase/firestore'
 import {BiUserPlus,BiImage,BiArchiveIn}from 'react-icons/bi'
 import {FiMoreVertical,FiTrash2}from 'react-icons/fi'
+import { AuthContext } from '../../Auth';
 import './style.css'
 
 const NoteCard =({view, item, setIsUpdate, displayCardContent}) =>{
+
+    const {user}=useContext(AuthContext)
+
     const handleMoveToTrash= async (item)=>{
         try{
-            const userDocs=doc(db,"Notes",item.id)
-            await updateDoc(userDocs,{...item ,isDeleted :true})
+            
+            const noteColloectionRef=doc(db,'Users',user.uid)
+            const subCollectionRef=doc(noteColloectionRef,'Notes',item.id)
+            await updateDoc(subCollectionRef,{...item ,isDeleted :true})
             setIsUpdate(true)
           }catch(e){
             console.log(e)

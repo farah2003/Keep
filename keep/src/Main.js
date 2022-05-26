@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {NavBar ,Sidebar /*,CardList*/}from './components/index';
+import PropTypes from 'prop-types';
 import  {GoogleAuthProvider ,signInWithPopup,getAuth,onAuthStateChanged} from 'firebase/auth';
 import './app.css'
-const Main=() =>{
+const Main=({view,setView}) =>{
   const [toggle,setToggle]=useState(false)
-  const [view,setView]=useState('list');
-
-  //const [isUpdate,setIsUpdate]=useState(false);
   const [user ,setUser]=useState()
   const auth = getAuth();
   useEffect(()=>{
@@ -38,5 +36,9 @@ const Main=() =>{
 </>
   );
       }
+Main.propTypes = {
+  view:PropTypes.string.isRequired,
+  setView:PropTypes.func.isRequired
+}
 
 export default Main;

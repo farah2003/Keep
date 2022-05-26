@@ -13,7 +13,6 @@ function CardList({view,notes,setIsUpdate}) {
         setEditModle(true)
         setUpdateNote(item)
     }
-    
     const handleEditNote=async()=>{
         try{
             const userDocs=doc(db,"Notes",updateNote.id)
@@ -34,15 +33,16 @@ function CardList({view,notes,setIsUpdate}) {
             handleEditNote={handleEditNote} 
             updateNote={updateNote}
             setUpdateNote={setUpdateNote}/>
-           :  <div className={`${view}`}>
+           :<div className={`${view}`}>
                {notes.map((item)=>{
                 return (
-                <div key={item.id} >
-                 <NoteCard view={view} item={item} setIsUpdate={setIsUpdate} displayCardContent={displayCardContent}/>
+                <div key={item.id}>
+                 <NoteCard view={view} 
+                 item={item} 
+                 setIsUpdate={setIsUpdate} 
+                 displayCardContent={displayCardContent}/>
                  </div>)
-               })}
-             
-
+               })}            
             </div>}
           
           

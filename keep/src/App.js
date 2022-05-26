@@ -4,10 +4,11 @@ import { Route,  Routes,BrowserRouter } from 'react-router-dom';
 import Main from './Main';
 import {db} from './firebase-config'
 import {collection ,getDocs ,where,query} from 'firebase/firestore'
-
 import { CardList } from './components';
 function App() {
   const [notes,setNotes]=useState([]);
+  const [view,setView]=useState('list');
+  const [isUpdate,setIsUpdate]=useState(false);
   const notesColloectionRef=collection(db,"Notes")
   useEffect(()=>{
     const fetchData=async()=>{
@@ -21,14 +22,18 @@ function App() {
     }
     fetchData()
 
-  },/*[isUpdate]*/)
+  },[isUpdate])
     return (
         <div>
     <AuthContext.Provider>
         <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Main/>} >
-      <Route index element={<CardList notes={notes}/>}></Route>
+      <Route path="/" element={<Main setView={setView} view={view}/>} >
+      <Route index 
+      element={<CardList
+       notes={notes}
+       view={view} 
+      setIsUpdate={setIsUpdate}/>}/>
       <Route path="/reminder" element={<div>reminder</div>} />
       <Route path='/archive' element={<div>archive</div>}/>
       <Route path='/edit' element={<div>edit</div>}/>

@@ -5,10 +5,10 @@ import {IoReload} from 'react-icons/io5'
 import {BsFillGrid3X3GapFill}from 'react-icons/bs'
 import {MdOutlineViewAgenda} from 'react-icons/md'
 import './style.css'
-function NavBar({setToggle,view,setView}) {
+function NavBar({setToggle,view,setView}) { 
     return (
         <div className='NavBar'>
-            <div className='first-section'>
+              <div className='first-section'>
                 <div className='icon'>
                     <FiMenu onClick={()=>setToggle((prev)=>!prev)}/>
                 </div>
@@ -25,9 +25,9 @@ function NavBar({setToggle,view,setView}) {
                         <IoReload/>
                     </div>
                     <div className='icon'>
-                        {view==="grid"?  <FiGrid onClick={()=>setView('list')}/>:
-                          <MdOutlineViewAgenda onClick={()=>setView('grid') }/>}
-                      
+                        {view==="grid"?  <MdOutlineViewAgenda
+                        onClick={()=>setView('list')}/>:
+                        <FiGrid onClick={()=>setView('grid') }/>}                     
                     </div>
                     <div className='icon'>
                         <FiSettings/>

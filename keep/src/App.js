@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {NavBar ,Sidebar ,CardList}from './components/index';
+import  {GoogleAuthProvider ,signInWithPopup,getAuth} from 'firebase/auth';
 import {db} from './firebase-config'
 import {collection ,getDocs ,where,query} from 'firebase/firestore'
 
@@ -25,9 +26,25 @@ const App=() =>{
     fetchData()
 
   },[isUpdate])
+  const auth = getAuth();
+
+  const signUp=async ()=>{
+      try{
+        let googleProvider= new GoogleAuthProvider()
+        const {user} = await signInWithPopup(auth,googleProvider)
+        console.log(user.uid)
+        console.log(user.photoURL)
+      }catch(e){
+        console.log(e)
+      }
+  
+  
+
+  }
   return (    
     <div>
       <NavBar setToggle={setToggle} view={view} setView={setView}/>
+      <button onClick={()=>signUp()}>sign</button>  
       <div className='page-content'>
         {toggle?
         <div className="non-expanded">
@@ -46,7 +63,8 @@ const App=() =>{
          />
         </div>
       
-      </div>      
+      </div>
+         
     </div>
 
   );

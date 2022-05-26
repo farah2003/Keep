@@ -4,74 +4,90 @@ import {GoLightBulb} from 'react-icons/go'
 import{BsBell} from 'react-icons/bs'
 import {BiPencil,BiArchiveIn} from 'react-icons/bi'
 import {FiTrash2} from'react-icons/fi'
+import { Link, Outlet } from 'react-router-dom';
 import './style.css'
 function Sidebar({toggle}) {
     return (
-            !toggle? <div className='sidebar'>
+     <div className='page-content'>
+    {!toggle?
+        <div className="expanded">
+            <div className='sidebar'>
                 <ul>
                     <li>
-                        <a href='#'>          
+                        <Link to='/'>          
                        <GoLightBulb  className='sider-icon'/>
                         <span className='links_name'>Notes</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/reminder'>
                             <BsBell className='sider-icon'/>
                             <span className='links_name'>Reminders</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/archive'>
                         <BiPencil className='sider-icon'/>
                             <span className='links_name'>Edit lable</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/edit'>
                             <BiArchiveIn className='sider-icon'/>
                             <span className='links_name'>Archive</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/trash'>
                             <FiTrash2 className='sider-icon'/>
                             <span className='links_name'>Trash</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             
-        </div>:        <div className='sidebar2'>
+        
+       
+       
+        </div>
+        </div>:  
+        <div className='non-expanded'>     
+         <div className='sidebar2'>
                 <ul>
                     <li>
-                        <a href='#'>          
+                        <Link to='/'>          
                        <GoLightBulb  className='sider-icon'/>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/reminder'>
                             <BsBell className='sider-icon'/>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/edit'>
                         <BiPencil className='sider-icon'/>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/archive'>
                             <BiArchiveIn className='sider-icon'/>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href='#'>
+                        <Link to='/trash'>
                             <FiTrash2 className='sider-icon'/>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             
         </div> 
-    );
+        </div>
+        }
+        <div className='cards-conatiner'>
+        <Outlet></Outlet>
+        </div>
+        </div>
+    )
 }
 
 Sidebar.propTypes = {

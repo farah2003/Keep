@@ -1,19 +1,36 @@
-import React,{useState ,useContext } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import PropTypes from 'prop-types';
 import {db} from '../../firebase-config'
-import {updateDoc, doc} from 'firebase/firestore'
+import {collection, getDocs, where, query,doc,updateDoc} from 'firebase/firestore'
+import {AuthContext} from '../../Auth';
 import NoteCard from '../NoteCard/index';
 import NotesInput  from '../NotesInput/index';
 import EditNotes from '../EditNotes';
-import { AuthContext} from '../../Auth';
 import './style.css'
 
-const CardList=({view,notes,setIsUpdate}) =>{
+const CardList=({view}) =>{
     const [editModle,setEditModle]=useState(false);
     const [updateNote,setUpdateNote]=useState({});
-    const {user}=useContext(AuthContext)
-    console.log(user.uid,'currentUsercurrentUser')
+    const [isUpdate,setIsUpdate]=useState(false);
+    const [notes,setNotes]=useState([]);
 
+    const {user}=useContext(AuthContext)
+
+  useEffect(()=>{
+    const fetchData=async()=>{
+      try{
+        const noteColloectionRef=doc(db,'Users',user.uid)
+        const subCollectionRef=collection(noteColloectionRef,'Notes')
+        const notesquery=query(subCollectionRef,where("isDeleted","==",false))
+        const data =await getDocs(notesquery);
+        setNotes(data.docs.map((doc)=>({...doc.data(),id:doc.id })))
+      }catch(e){
+        console.log(e)
+      }
+    }
+    fetchData()
+
+  },[isUpdate])
     const displayCardContent=(item)=>{
         setEditModle(true)
         setUpdateNote(item)
@@ -21,8 +38,9 @@ const CardList=({view,notes,setIsUpdate}) =>{
 
     const handleEditNote=async()=>{
         try{
-            const userDocs=doc(db,"Notes",updateNote.id)
-            await updateDoc(userDocs,updateNote)
+            const noteColloectionRef=doc(db,'Users',user.uid)
+            const subCollectionRef=doc(noteColloectionRef,'Notes',updateNote.id)
+            await updateDoc(subCollectionRef,updateNote)
             setIsUpdate(true)
             setEditModle(false)
           }catch(e){
@@ -57,8 +75,6 @@ const CardList=({view,notes,setIsUpdate}) =>{
 }
 CardList.propTypes = {
  view:PropTypes.string.isRequired,
- notes:PropTypes.arrayOf.isRequired,
- setIsUpdate:PropTypes.func.isRequired
   };
 
 export default CardList;

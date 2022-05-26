@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {NavBar ,Sidebar ,CardList}from './components/index';
-import  {GoogleAuthProvider ,signInWithPopup,getAuth,onAuthStateChanged} from 'firebase/auth';
+import {AuthContext} from './Auth'
+import { Route,  Routes,BrowserRouter } from 'react-router-dom';
+import Main from './Main';
 import {db} from './firebase-config'
 import {collection ,getDocs ,where,query} from 'firebase/firestore'
 
-import './app.css'
-const App=() =>{
-  const [toggle,setToggle]=useState(false)
-  const [view,setView]=useState('list');
+import { CardList } from './components';
+function App() {
   const [notes,setNotes]=useState([]);
-  const [isUpdate,setIsUpdate]=useState(false);
   const notesColloectionRef=collection(db,"Notes")
-  const [user ,setUser]=useState()
-  const auth = getAuth();
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user)
-      console.log(user,'cureent user')  
-      }})
-  },[]);
-
   useEffect(()=>{
     const fetchData=async()=>{
       try{
@@ -33,48 +21,26 @@ const App=() =>{
     }
     fetchData()
 
-  },[isUpdate])
+  },/*[isUpdate]*/)
+    return (
+        <div>
+    <AuthContext.Provider>
+        <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Main/>} >
+      <Route index element={<CardList notes={notes}/>}></Route>
+      <Route path="/reminder" element={<div>reminder</div>} />
+      <Route path='/archive' element={<div>archive</div>}/>
+      <Route path='/edit' element={<div>edit</div>}/>
+      <Route path='/trash' element={<div>trash</div>}/>
+      </Route>
+  
+    </Routes>
+    </BrowserRouter>
+    </AuthContext.Provider>
 
-
-
-  const signUp=async ()=>{
-      try{
-        let googleProvider= new GoogleAuthProvider()
-        const {user} = await signInWithPopup(auth,googleProvider)
-        setUser(user)
-      }catch(e){
-        console.log(e)
-      }
-  }
-  return ( 
-    user?
-    <div>
-    
-      <NavBar setToggle={setToggle} view={view} setView={setView}/> 
-      <div className='page-content'>
-        {toggle?
-        <div className="non-expanded">
-          <Sidebar  toggle={toggle}/>
         </div>
-        :
-        <div className='expanded'>
-          <Sidebar toggle={toggle}/>
-        </div>
-        }
-        <div className='cards-conatiner'>
-          <CardList
-          notes={notes}
-           view={view}
-           setIsUpdate={setIsUpdate}
-         />
-        </div>
-      
-      </div>
-         
-    </div>:
-    <div><button onClick={()=>signUp()}>sign</button> </div>
-
-  );
-      }
+    );
+}
 
 export default App;

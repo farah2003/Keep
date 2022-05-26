@@ -7,13 +7,13 @@ import NotesInput  from '../NotesInput/index';
 import EditNotes from '../EditNotes';
 import './style.css'
 function CardList({view,notes,setIsUpdate}) {
-    const [editModle,setEditModle]=useState(false)
-    const [updateNote,setUpdateNote]=useState({})
-
+    const [editModle,setEditModle]=useState(false);
+    const [updateNote,setUpdateNote]=useState({});
     const displayCardContent=(item)=>{
         setEditModle(true)
         setUpdateNote(item)
     }
+    
     const handleEditNote=async()=>{
         try{
             const userDocs=doc(db,"Notes",updateNote.id)

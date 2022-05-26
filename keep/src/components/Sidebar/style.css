@@ -1,3 +1,17 @@
+.cards-conatiner{
+    min-height: 100%;
+    width: 100%;
+  }
+  .expanded{
+    width: 240px;
+  }
+  .non-expanded{
+      width: 60px;
+  }
+  .page-content{
+    display: flex;
+    gap: 30px;
+}  
 .sidebar{
     position: fixed;
     height: 100%;

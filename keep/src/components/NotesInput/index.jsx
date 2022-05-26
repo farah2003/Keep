@@ -1,7 +1,7 @@
 import React, { useState ,useContext} from 'react';
 import PropTypes from 'prop-types';
 import {db} from '../../firebase-config'
-import {doc ,setDoc} from 'firebase/firestore'
+import {addDoc, doc, collection} from 'firebase/firestore'
 import { AuthContext} from '../../Auth';
 import {AiOutlineCheckSquare} from 'react-icons/ai'
 import {BsBell} from 'react-icons/bs'
@@ -13,11 +13,12 @@ function NotesInput({setIsUpdate}) {
     const [visible,setVisible]=useState(false)
     const [note,setNote]=useState({title:"",content:"",isDeleted:false})
     const {user}=useContext(AuthContext)
-    const noteColloectionRef=doc(db,'Notes',user.uid)
+    const noteColloectionRef=doc(db,'Users',user.uid)
+    const subCollectionRef=collection(noteColloectionRef,'Notes')
     const handleAddNotes=async()=>{
         try{
             setVisible(false)
-             await setDoc(noteColloectionRef,note)
+             await addDoc(subCollectionRef,note)
              setIsUpdate(true)
              setNote({title:"",content:""})
            }catch(e){

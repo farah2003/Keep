@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import {AuthContext} from './Auth'
 import { Route,  Routes,BrowserRouter } from 'react-router-dom';
-import Main from './Main';
+import {AuthContext} from './Auth'
 import {db} from './firebase-config'
-import {collection ,getDocs ,where,query} from 'firebase/firestore'
+import {collection, getDocs, where, query} from 'firebase/firestore'
 import { CardList } from './components';
-function App() {
+import Main from './Main';
+
+const App=()=> {
   const [notes,setNotes]=useState([]);
   const [view,setView]=useState('list');
   const [isUpdate,setIsUpdate]=useState(false);
-  const notesColloectionRef=collection(db,"Notes")
+  const notesColloectionRef=collection(db,"Notes");
+
   useEffect(()=>{
     const fetchData=async()=>{
       try{
@@ -23,14 +25,15 @@ function App() {
     fetchData()
 
   },[isUpdate])
+
     return (
         <div>
     <AuthContext.Provider>
-        <BrowserRouter>
+    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Main setView={setView} view={view}/>} >
       <Route index 
-      element={<CardList
+       element={<CardList
        notes={notes}
        view={view} 
       setIsUpdate={setIsUpdate}/>}/>
@@ -39,12 +42,10 @@ function App() {
       <Route path='/edit' element={<div>edit</div>}/>
       <Route path='/trash' element={<div>trash</div>}/>
       </Route>
-  
     </Routes>
     </BrowserRouter>
     </AuthContext.Provider>
-
-        </div>
+    </div>
     );
 }
 

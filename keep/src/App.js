@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route,  Routes,BrowserRouter } from 'react-router-dom';
-import {AuthContext} from './Auth'
+import {AuthProvider} from './Auth'
 import {db} from './firebase-config'
 import {collection, getDocs, where, query} from 'firebase/firestore'
 import { CardList } from './components';
@@ -28,7 +28,7 @@ const App=()=> {
 
     return (
         <div>
-    <AuthContext.Provider>
+    <AuthProvider>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Main setView={setView} view={view}/>} >
@@ -44,7 +44,7 @@ const App=()=> {
       </Route>
     </Routes>
     </BrowserRouter>
-    </AuthContext.Provider>
+    </AuthProvider>
     </div>
     );
 }

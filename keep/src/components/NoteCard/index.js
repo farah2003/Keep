@@ -8,7 +8,6 @@ import {FiMoreVertical,FiTrash2}from 'react-icons/fi'
 import './style.css'
 
 const NoteCard =({view, item, setIsUpdate, displayCardContent}) =>{
-
     const handleMoveToTrash= async (item)=>{
         try{
             const userDocs=doc(db,"Notes",item.id)

@@ -20,7 +20,7 @@ function NotesInput({setIsUpdate}) {
             setVisible(false)
              await addDoc(subCollectionRef,note)
              setIsUpdate(true)
-             setNote({title:"",content:""})
+             setNote({title:"",content:"",isDeleted:false})
            }catch(e){
              console.log(e)
            }

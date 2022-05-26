@@ -38,8 +38,9 @@ const CardList=({view}) =>{
 
     const handleEditNote=async()=>{
         try{
-            const userDocs=doc(db,"Notes",updateNote.id)
-            await updateDoc(userDocs,updateNote)
+            const noteColloectionRef=doc(db,'Users',user.uid)
+            const subCollectionRef=doc(noteColloectionRef,'Notes',updateNote.id)
+            await updateDoc(subCollectionRef,updateNote)
             setIsUpdate(true)
             setEditModle(false)
           }catch(e){

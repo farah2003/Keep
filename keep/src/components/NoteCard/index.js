@@ -23,6 +23,18 @@ const NoteCard =({view, item, setIsUpdate, displayCardContent}) =>{
             console.log(e)
           } 
     }
+    const handleMoveToArchive= async (item)=>{
+        try{
+            
+            const noteColloectionRef=doc(db,'Users',user.uid)
+            const subCollectionRef=doc(noteColloectionRef,'Notes',item.id)
+            await updateDoc(subCollectionRef,{...item ,inArchive :true})
+            setIsUpdate(true)
+          }catch(e){
+            console.log(e)
+          } 
+    }
+
 
     return (
         <div className={`card ${view}-card` }>
@@ -45,7 +57,7 @@ const NoteCard =({view, item, setIsUpdate, displayCardContent}) =>{
          <BiImage/>
          </div>       
          <div>
-         <BiArchiveIn/>
+         <BiArchiveIn onClick={()=>handleMoveToArchive(item)}/>
          </div>
          <div>
          <FiTrash2 onClick={()=>handleMoveToTrash(item)}/>

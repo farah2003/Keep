@@ -21,7 +21,7 @@ const CardList=({view}) =>{
       try{
         const noteColloectionRef=doc(db,'Users',user.uid)
         const subCollectionRef=collection(noteColloectionRef,'Notes')
-        const notesquery=query(subCollectionRef,where("isDeleted","==",false))
+        const notesquery=query(subCollectionRef,where("isDeleted","==",false),where("inArchive","==",false))
         const data =await getDocs(notesquery);
         setNotes(data.docs.map((doc)=>({...doc.data(),id:doc.id })))
       }catch(e){

@@ -11,7 +11,7 @@ import './style.css'
 
 function NotesInput({setIsUpdate}) {
     const [visible,setVisible]=useState(false)
-    const [note,setNote]=useState({title:"",content:"",isDeleted:false})
+    const [note,setNote]=useState({title:"",content:"",isDeleted:false,inArchive:false})
     const {user}=useContext(AuthContext)
     const noteColloectionRef=doc(db,'Users',user.uid)
     const subCollectionRef=collection(noteColloectionRef,'Notes')
@@ -20,7 +20,7 @@ function NotesInput({setIsUpdate}) {
             setVisible(false)
              await addDoc(subCollectionRef,note)
              setIsUpdate(true)
-             setNote({title:"",content:"",isDeleted:false})
+             setNote({title:"",content:"",isDeleted:false,inArchive:false})
            }catch(e){
              console.log(e)
            }

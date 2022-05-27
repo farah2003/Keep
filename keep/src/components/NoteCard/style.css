@@ -36,11 +36,19 @@
     line-height: 1.25rem;
 
 }
-.card-icons{
+.grid-card .card-icons{
     display: flex;
     align-items: flex-end;
-        min-height: 50px;
-    gap:30px;
+     min-height: 50px;
+    gap:20px;
+    font-size: 17px;  
+    opacity: 0;
+}
+.list-card .card-icons{
+    display: flex;
+    align-items: flex-end;
+    min-height: 50px;
+    gap:35px;
     font-size: 17px;  
     opacity: 0;
 }

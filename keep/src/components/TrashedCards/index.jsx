@@ -12,7 +12,7 @@ function TrashedCards({view}) {
         const fetchData= async()=>{
             const noteColloectionRef=doc(db,'Users',user.uid)
             const subCollectionRef=collection(noteColloectionRef,'Notes')
-            const notesquery=query(subCollectionRef,where("isDeleted","==",false))
+            const notesquery=query(subCollectionRef,where("isDeleted","==",true))
             const data =await getDocs(notesquery);
             setTrashedNotes(data.docs.map((doc)=>({...doc.data(),id:doc.id })))
         }

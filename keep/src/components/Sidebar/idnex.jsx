@@ -26,13 +26,13 @@ function Sidebar({toggle}) {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/archive'>
+                        <Link to='/edit'>
                         <BiPencil className='sider-icon'/>
                             <span className='links_name'>Edit lable</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to='/edit'>
+                        <Link to='/archive'>
                             <BiArchiveIn className='sider-icon'/>
                             <span className='links_name'>Archive</span>
                         </Link>
